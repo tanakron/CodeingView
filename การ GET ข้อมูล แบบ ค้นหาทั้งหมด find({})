@@ -1,0 +1,8 @@
+
+// การ GET ข้อมูล แบบ ค้นหาทั้งหมด find({})
+
+router.get("/palyid", async (req, res) => {
+  const user = await db.collection(" ชื่อ คอเล็คชั่น ").find({}).toArray();
+  res.json(user);
+  res.end;
+});
