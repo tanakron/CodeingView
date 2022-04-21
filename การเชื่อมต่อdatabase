@@ -1,0 +1,22 @@
+//การเชื่อมต่อdatabase
+
+const MongoClient = require("mongodb").MongoClient;
+const url = " ใส่ลิงค์ mongodb  ";
+var _db;
+var dbname = " ชื่อ  data base";
+const connectDb = (callback) => {
+  if (_db) return callback();
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, clinet) {
+    if (err) return console.log(err);
+    _db = clinet.db(dbname);
+    console.log("Database Connected Namedataconfigdb");
+    callback();
+  });
+};
+
+const getDb = () => _db;
+
+module.exports = {
+  connectDb,
+  getDb,
+};
