@@ -1,0 +1,25 @@
+// การ insert ข้อมูล แบบ POST
+
+
+router.post("/stockplaylottotode/", async (req, res) => {
+  let id = req.body.id;
+  let bill = req.body.bill;
+  let bet3tode = req.body.bet3tode;
+  let bet2down = req.body.bet2down;
+  let bet1down = req.body.bet1down;
+  let betpay = req.body.betpay;
+  let typegame = req.body.typegame;
+  let typeplay = req.body.typeplay;
+  // console.log(bet3up + betpay);
+  await db.collection("getplaylottostock").insertOne({
+    id: parseInt(id),
+    bill: Math.ceil(Math.random() * 10000),
+    bet3tode: parseInt(bet3tode),
+    bet2down: parseInt(bet2down),
+    bet1down: parseInt(bet1down),
+    betpay: parseInt(betpay),
+    typegame: typegame,
+    typeplay: typeplay,
+    createdateDate: moment(new Date()).format("MMMM Do YYYY, h:mm:ss a "),
+  });
+  res.end();
